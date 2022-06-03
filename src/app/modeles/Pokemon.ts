@@ -1,6 +1,8 @@
+import {Generation} from "./Generation";
+
 export class Pokemon{
 
-  private _generation : number;
+  private _generation : Generation;
   private _id : number;
   private _nom : string;
   private _espece : string;
@@ -10,7 +12,7 @@ export class Pokemon{
   private _image : string;
 
 
-  constructor(generation: number, id: number, nom: string, espece: string, types: string[], taille: number = -1, poids: number = -1) {
+  constructor(generation: Generation, id: number, nom: string, espece: string, types: string[], taille: number = -1, poids: number = -1) {
     this._generation = generation;
     this._id = id;
     this._nom = nom;
@@ -22,7 +24,7 @@ export class Pokemon{
   }
 
 
-  get generation(): number {
+  get generation(): Generation {
     return this._generation;
   }
 

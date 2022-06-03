@@ -3,12 +3,12 @@
 <h2>Dans l'ordre du pokedex : </h2>
 <div class="container">
   <div class="row">
-    <div class="col-4 bloc" *ngFor="let pokemon of svc.pokemons">
-      <div><img src="{{pokemon.image}}" alt=""></div>
+    <div class="col-4 bloc" *ngFor="let pokemon of svc.getPokemonsGeneration(svc.idGenerationSelectionnee)">
+      <div><img src="{{pokemon.image}}" alt="{{pokemon.nom}}"></div>
       <div>Nom : {{pokemon.nom}}</div>
       <div> Espèce : Pokemon {{pokemon.espece}}</div>
       <div> Type : {{pokemon.types.join(",")}}</div>
-      <div> Taille : {{pokemon.taille / 100}} m</div>
+      <div> Taille : {{pokemon.taille|number:'1.0-2'}} m</div>
       <div>Poids : {{pokemon.poids}} kg</div>
     </div>
   </div>

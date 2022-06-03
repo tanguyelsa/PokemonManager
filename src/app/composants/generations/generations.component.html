@@ -3,6 +3,6 @@
   <hr>
   <h2>Les différentes générations : </h2>
   <ul>
-    <li *ngFor="let gen of generations">{{gen}}</li>
+    <li *ngFor="let gen of generations" (click)="selectionnerGeneration(gen.id)">{{gen.nom}}</li>
   </ul>
 </div>

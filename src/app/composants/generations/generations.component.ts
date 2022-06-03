@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {GestionPokedexService} from "../../services/gestion-pokedex.service";
+import {Generation} from "../../modeles/Generation";
+
 
 @Component({
   selector: 'app-generations',
@@ -7,21 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GenerationsComponent implements OnInit {
 
-  private _generations : string[];
+  private _generations : Generation[];
 
-  constructor() {
-    this._generations = ['Génération I','Génération II','Génération III','Génération IV','Génération V','Génération VI','Génération VII'];
+  constructor(public svc : GestionPokedexService) {
+    this._generations = svc.generations;
   }
 
-  get generations(): string[] {
+  get generations(): Generation[] {
     return this._generations;
-  }
-
-  set generations(value: string[]) {
-    this._generations = value;
   }
 
   ngOnInit(): void {
   }
 
+  selectionnerGeneration(numero:number) : void{
+    this.svc.idGenerationSelectionnee = numero;
+  }
 }
