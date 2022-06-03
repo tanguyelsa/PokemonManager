@@ -14,13 +14,13 @@ export class GestionPokedexService {
   constructor() {
     this._pokemons = [
 
-      new Pokemon(new Generation(1), 2, "Herbizarre", "Graine", ["plante", "poison"], 1, 13),
-      new Pokemon(new Generation(1), 3, "Florizarre", "Graine", ["plante", "poison"], 2, 100),
-      new Pokemon(new Generation(1), 1, "Bulbizarre", "Graine", ["plante", "poison"], 0.7, 6.9),
-      new Pokemon(new Generation(1), 4, "Salamèche", "Lézard", ["feu"], 0.6, 8.5),
-      new Pokemon(new Generation(1), 5, "Reptincel", "Flamme", ["feu"], 1.1, 19),
-      new Pokemon(new Generation(1), 6, "Dracofeu", "Flamme", ["feu", "vol"], 1.7, 90.5),
-      new Pokemon(new Generation(2), 152, "Germignon", "Feuille", ["plante"], 0.9, 6.4)
+      new Pokemon(new Generation(1), 2, "Herbizarre", "Graine", ["plante", "poison"], 100, 13),
+      new Pokemon(new Generation(1), 3, "Florizarre", "Graine", ["plante", "poison"], 200, 100),
+      new Pokemon(new Generation(1), 1, "Bulbizarre", "Graine", ["plante", "poison"], 70, 6.9),
+      new Pokemon(new Generation(1), 4, "Salamèche", "Lézard", ["feu"], 60, 8.5),
+      new Pokemon(new Generation(1), 5, "Reptincel", "Flamme", ["feu"], 110, 19),
+      new Pokemon(new Generation(1), 6, "Dracofeu", "Flamme", ["feu", "vol"], 170, 90.5),
+      new Pokemon(new Generation(2), 152, "Germignon", "Feuille", ["plante"], 90, 6.4)
     ]
     this._generations = [
       new Generation(0),
@@ -55,10 +55,10 @@ export class GestionPokedexService {
   }
 
   public getNbPokemons(): number {
-    return this._pokemons.length;
+    return this.getPokemonsGeneration().length;
   }
 
-  public getPokemonsGeneration(numero : number):Pokemon[]{
+  public getPokemonsGeneration():Pokemon[]{
     let pokemonsGeneration : Pokemon[] = [];
     if (this._idGenerationSelectionnee==0){
       pokemonsGeneration = this.pokemons;
@@ -66,7 +66,7 @@ export class GestionPokedexService {
     else {
       for (let pokemon of this.pokemons) {
 
-        if (pokemon.generation.id == numero){
+        if (pokemon.generation.id == this.idGenerationSelectionnee){
           pokemonsGeneration.push(pokemon);
         }
       }
@@ -83,4 +83,5 @@ export class GestionPokedexService {
   get idGenerationSelectionnee(): number {
     return this._idGenerationSelectionnee;
   }
+
 }

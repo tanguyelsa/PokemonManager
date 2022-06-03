@@ -1,14 +1,17 @@
-<h2>Les {{svc.getNbPokemons()}} premiers Pokémons :</h2>
+<h2>{{svc.generations[svc.idGenerationSelectionnee].nom}} : </h2>
+<h3 *ngIf="svc.getNbPokemons()!=0">{{svc.getNbPokemons()}} Pokémon(s) trouvé(s) :</h3>
+<h3 *ngIf="svc.getNbPokemons()==0">Aucun Pokemon n'a été trouvé :</h3>
 <hr>
-<h2>Dans l'ordre du pokedex : </h2>
+<h2 *ngIf="svc.getNbPokemons()!=0">Dans l'ordre du pokedex : </h2>
 <div class="container">
   <div class="row">
-    <div class="col-4 bloc" *ngFor="let pokemon of svc.getPokemonsGeneration(svc.idGenerationSelectionnee)">
-      <div><img src="{{pokemon.image}}" alt="{{pokemon.nom}}"></div>
+    <div class="col-4 bloc" *ngFor="let pokemon of svc.getPokemonsGeneration()">
+      <div><img [src]="pokemon.image" [alt]="pokemon.nom"></div>
+      <div>n° : {{pokemon.id|number:'3.0-0'}}</div>
       <div>Nom : {{pokemon.nom}}</div>
-      <div> Espèce : Pokemon {{pokemon.espece}}</div>
-      <div> Type : {{pokemon.types.join(",")}}</div>
-      <div> Taille : {{pokemon.taille|number:'1.0-2'}} m</div>
+      <div>Espèce : Pokemon {{pokemon.espece}}</div>
+      <div>Type(s) : {{pokemon.types.join(", ")}}</div>
+      <div>Taille : <span *ngIf="pokemon.taille!=-1">{{pokemon.taille/100|number:'1.0-2'}}  m</span><span *ngIf="pokemon.taille==-1">N/A</span></div>
       <div>Poids : {{pokemon.poids}} kg</div>
     </div>
   </div>

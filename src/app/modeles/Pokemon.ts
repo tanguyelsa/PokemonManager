@@ -20,7 +20,7 @@ export class Pokemon{
     this._types = types;
     this._taille = taille;
     this._poids = poids;
-    this._image = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"+id.toString()+".png";
+    this._image = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + id + ".png";
   }
 
 

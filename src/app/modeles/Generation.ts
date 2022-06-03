@@ -1,7 +1,8 @@
+
+
 export class Generation{
   private _id : number;
   private _nom : string;
-
 
   constructor(id: number) {
     this._id = id;
@@ -11,6 +12,7 @@ export class Generation{
     else{
       this._nom = "Génération " + id.toString();
     }
+
   }
 
   get id(): number {
