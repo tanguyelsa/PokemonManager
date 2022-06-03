@@ -1,0 +1,16 @@
+<h2>Les {{svc.getNbPokemons()}} premiers Pokémons :</h2>
+<hr>
+<h2>Dans l'ordre du pokedex : </h2>
+<div class="container">
+  <div class="row">
+    <div class="col-4 bloc" *ngFor="let pokemon of svc.pokemons">
+      <div><img src="{{pokemon.image}}" alt=""></div>
+      <div>Nom : {{pokemon.nom}}</div>
+      <div> Espèce : Pokemon {{pokemon.espece}}</div>
+      <div> Type : {{pokemon.types.join(",")}}</div>
+      <div> Taille : {{pokemon.taille / 100}} m</div>
+      <div>Poids : {{pokemon.poids}} kg</div>
+    </div>
+  </div>
+</div>
+
